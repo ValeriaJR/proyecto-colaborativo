@@ -1,0 +1,183 @@
+:root{
+  --brand-green:#66C261; 
+  --input-gray:#D9D9D9;   
+}
+
+*{ box-sizing:border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.auth-bg{
+  min-height: 100vh;
+  background: url("/principal.png") center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 1rem;
+}
+
+.auth-card{
+  width: 420px;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(6px);
+  color:#fff;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth-toggle{
+  display: flex;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.2);
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.auth-toggle button{
+  border: none;
+  padding: .5rem 1.2rem;
+  font-weight: 600;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  border-radius: 999px;
+}
+
+.auth-toggle button.active{
+  background: var(--brand-green);
+  color: white;
+}
+
+.auth-title{
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: .06em;
+  margin-bottom: 1.5rem;
+}
+
+.form-control.pill {
+  border-radius: 999px !important;
+  background: var(--input-gray);
+  border: none;
+  color: black;
+  padding: .7rem 1rem;
+}
+.form-control.pill::placeholder {
+  color: rgba(0,0,0,0.6);
+}
+.btn-brand {
+  display: flex;
+  background: var(--brand-green);
+  border: none;
+  color: #fff;
+  border-radius: 999px;
+  padding: .65rem 1.4rem;
+  font-weight: 700;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  margin: 0 auto; 
+}
+.btn-brand:hover{
+  filter: brightness(0.45);
+}
+/* ===== Calendar theme ===== */
+
+.react-calendar {
+  width: 100%;
+  max-width: 340px;
+  background: rgba(255,255,255,.92);
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
+  padding: .5rem .5rem 1rem;
+}
+.react-calendar__navigation button {
+  font-weight: 700;
+  border-radius: 10px;
+  padding: .4rem .6rem;
+}
+.react-calendar__tile {
+  border-radius: 10px;
+  padding: .6rem 0;
+}
+.react-calendar__tile--now {
+  background: rgba(102,194,97,.18);
+}
+.react-calendar__tile--active,
+.react-calendar__tile--rangeStart,
+.react-calendar__tile--rangeEnd,
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background: var(--brand-green) !important;
+  color: #fff !important;
+}
+/* ===== Top Nav ===== */
+.topbar{
+  position: sticky;         /* se pega arriba al hacer scroll */
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  padding: 10px 16px;       /* margen interno del header */
+}
+
+.topbar-inner{
+  margin-left: auto;        /* empuja el grupo a la derecha */
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  border-radius: 999px;
+  padding: 8px 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+}
+
+/* Top nav */
+.nav-pill{
+  border: 2px solid transparent;   /* contorno invisible por defecto */
+  border-radius: 999px;
+  padding: .45rem 1rem;
+  background: transparent;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  
+}
+.nav-pill:hover{
+  background: rgba(255,255,255,.08);
+}
+
+/* item activo: contorno verde */
+.nav-pill.active{
+  border-color: var(--brand-green);
+}
+/* Barra fija para admin */
+.admin-topbar{
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 10px 16px;
+}
+.admin-topbar-inner{
+  margin: 0 auto;
+  max-width: 960px;
+  display: flex; gap: 12px; align-items: center;
+  background: rgba(0,0,0,.55); color:#fff;
+  border-radius: 999px; padding: 8px 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+}
+
