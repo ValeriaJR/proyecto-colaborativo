@@ -1,0 +1,31 @@
+# backend/app/api/routes/requests.py
+
+from fastapi import APIRouter, Depends
+from app.api.dependencies.auth import get_current_user
+from app.schemas.request import RequestCreate
+from app.infrastructure.db.session import SessionLocal
+from sqlalchemy.orm import Session
+from app.infrastructure.db.models import CollectionRequest, User as UserModel
+import uuid
+
+router = APIRouter(prefix="/requests", tags=["Recolecciones"])
+
+@router.post("/", response_model=dict)
+def create_request(
+    request_: RequestCreate,
+    db: Session = Depends(SessionLocal),
+    current_user: UserModel = Depends(get_current_user)
+):
+    # Aquí puedes usar current_user para asociar la solicitud al usuario
+    db_request = CollectionRequest(
+        id=str(uuid.uuid4()),
+        user_id=current_user.id,
+        type_of_waste=request_.type_of_waste.value,
+        scheduled_date=request_.scheduled_date,
+        notes=request_.notes,
+        status="CREADA"
+    )
+    db.add(db_request)
+    db.commit()
+    db.refresh(db_request)
+    return {"message": "Recolección programada", "request_id": db_request.id}

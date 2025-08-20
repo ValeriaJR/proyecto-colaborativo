@@ -1,0 +1,6 @@
+[tool.python]
+packages = ["app"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]    

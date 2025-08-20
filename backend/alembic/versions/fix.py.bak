@@ -1,0 +1,16 @@
+# backend/alembic/versions/..._fix_status_type.py
+from alembic import op
+
+
+def upgrade():
+    op.execute("""
+        ALTER TABLE campaign_registrations 
+        ALTER COLUMN status TYPE requeststatus 
+        USING status::requeststatus
+    """)
+
+def downgrade():
+    op.execute("""
+        ALTER TABLE campaign_registrations 
+        ALTER COLUMN status TYPE VARCHAR(50)
+    """)
